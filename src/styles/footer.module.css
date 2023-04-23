@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem; /* Footer height */
+  background: linear-gradient(
+    to right,
+    #080f19,
+    #3c6fc8,
+    #8ed752,
+    #ffa756,
+    #f9dc5c,
+    #a2579e,
+    #ee2c2c
+  );
+  border-top: 1px solid black;
+
+  color: #000000;
+  font-size: 1.2rem;
+}
