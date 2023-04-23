@@ -9,7 +9,9 @@ export default function Nav() {
       <div className={styles.nav}>
         <ul className={styles.menu}>
           <li className={styles.home}>
-            <Link href='/'>PokeBattle</Link>
+            <Link className={styles.link} href='/'>
+              PokeBattle
+            </Link>
           </li>
           <li className={styles.icon}>
             <Link href='/'>
