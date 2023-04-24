@@ -8,7 +8,21 @@ import { useEffect, useState } from "react"
 export default function Battle() {
   const [firstChoice, setFirstChoice] = useState("")
   const [secondChoice, setSecondChoice] = useState("")
+  const [pokeName1, setPokeName1] = useState("")
+  const [pokeName2, setPokeName2] = useState("")
+  const [pokeArt1, setPokeArt1] = useState("")
+  const [pokeArt2, setPokeArt2] = useState("")
 
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/pokemon")
+      const data = await response.json()
+      setPokeName1(data.data)
+      setPokeName2(data.data2)
+    }
+    fetchData()
+  }, [])
+  //console.log(pokeName1.sprites.back_default)
   const handleFirstChoice = (choice) => {
     setFirstChoice(choice)
     console.log(choice)
@@ -39,8 +53,8 @@ export default function Battle() {
     <>
       <div className={styles.container}>
         <div className={styles.opp1}>
-          <div className={styles.name}>Name</div>
-          <div className={styles.player}>Player</div>
+          <div className={styles.name}>{pokeName1.name}</div>
+          <div className={styles.player}></div>
           <div className={styles.options}>
             <div
               className={styles.fire}
@@ -64,7 +78,7 @@ export default function Battle() {
         </div>
         <div className={styles.vs}>VS</div>
         <div className={styles.opp2}>
-          <div className={styles.name}>Name</div>
+          <div className={styles.name}>{pokeName2.name}</div>
           <div className={styles.player}>Player</div>
           <div className={styles.options}>
             <div
