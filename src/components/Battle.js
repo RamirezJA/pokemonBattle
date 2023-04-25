@@ -22,7 +22,7 @@ export default function Battle() {
     }
     fetchData()
   }, [])
-  //console.log(pokeName1.sprites.back_default)
+
   const handleFirstChoice = (choice) => {
     setFirstChoice(choice)
     console.log(choice)
@@ -54,7 +54,18 @@ export default function Battle() {
       <div className={styles.container}>
         <div className={styles.opp1}>
           <div className={styles.name}>{pokeName1.name}</div>
-          <div className={styles.player}></div>
+          <div className={styles.player}>
+            {pokeName1.sprites?.front_default ? (
+              <Image
+                src={pokeName1.sprites.front_default}
+                alt={pokeName1.name}
+                width={300}
+                height={300}
+              />
+            ) : (
+              <div>No image available</div>
+            )}
+          </div>
           <div className={styles.options}>
             <div
               className={styles.fire}
@@ -79,7 +90,18 @@ export default function Battle() {
         <div className={styles.vs}>VS</div>
         <div className={styles.opp2}>
           <div className={styles.name}>{pokeName2.name}</div>
-          <div className={styles.player}>Player</div>
+          <div className={styles.player}>
+            {pokeName2.sprites?.front_default ? (
+              <Image
+                src={pokeName2.sprites.front_default}
+                alt={pokeName2.name}
+                width={300}
+                height={300}
+              />
+            ) : (
+              <div>No image available</div>
+            )}
+          </div>
           <div className={styles.options}>
             <div
               className={styles.fire}
