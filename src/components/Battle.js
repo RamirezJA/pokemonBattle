@@ -4,6 +4,7 @@ import grass from "../../public/grass.png"
 import water from "../../public/water-drop.png"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import "animate.css"
 
 export default function Battle() {
   const [firstChoice, setFirstChoice] = useState("")
@@ -59,6 +60,7 @@ export default function Battle() {
               <Image
                 src={pokeName1.sprites.front_default}
                 alt={pokeName1.name}
+                className='animate__animated animate__shakeY animate__slow animate__infinite'
                 width={300}
                 height={300}
               />
@@ -95,6 +97,7 @@ export default function Battle() {
               <Image
                 src={pokeName2.sprites.front_default}
                 alt={pokeName2.name}
+                className='animate__animated animate__shakeY animate__slow animate__infinite'
                 width={300}
                 height={300}
               />
