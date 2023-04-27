@@ -13,6 +13,8 @@ export default function Battle() {
   const [pokeName2, setPokeName2] = useState("")
   const [pokeArt1, setPokeArt1] = useState("")
   const [pokeArt2, setPokeArt2] = useState("")
+  const [playe1Choice, setPlayer1Choice] = useState("")
+  const [playe2Choice, setPlayer2Choice] = useState("")
 
   useEffect(() => {
     async function fetchData() {
@@ -60,7 +62,7 @@ export default function Battle() {
               <Image
                 src={pokeName1.sprites.front_default}
                 alt={pokeName1.name}
-                className='animate__animated animate__shakeY animate__slow animate__infinite'
+                //className='animate__animated animate__shakeY animate__slow animate__infinite'
                 width={300}
                 height={300}
               />
@@ -71,19 +73,19 @@ export default function Battle() {
           <div className={styles.options}>
             <div
               className={styles.fire}
-              onClick={() => handleFirstChoice("fire")}
+              onClick={() => handleFirstChoice("fire", setPlayer1Choice)}
             >
               <Image src={fire} alt='fire icon' width={50} height={50} />
             </div>
             <div
               className={styles.water}
-              onClick={() => handleFirstChoice("water")}
+              onClick={() => handleFirstChoice("water", setPlayer1Choice)}
             >
               <Image src={water} alt='water icon' width={50} height={50} />
             </div>
             <div
               className={styles.grass}
-              onClick={() => handleFirstChoice("grass")}
+              onClick={() => handleFirstChoice("grass", setPlayer1Choice)}
             >
               <Image src={grass} alt='grass icon' width={50} height={50} />
             </div>
@@ -97,7 +99,7 @@ export default function Battle() {
               <Image
                 src={pokeName2.sprites.front_default}
                 alt={pokeName2.name}
-                className='animate__animated animate__shakeY animate__slow animate__infinite'
+                //className='animate__animated animate__shakeY animate__slow animate__infinite'
                 width={300}
                 height={300}
               />
@@ -108,19 +110,19 @@ export default function Battle() {
           <div className={styles.options}>
             <div
               className={styles.fire}
-              onClick={() => handleSecondChoice("fire")}
+              onClick={() => handleSecondChoice("fire", setPlayer2Choice)}
             >
               <Image src={fire} alt='fire icon' width={50} height={50} />
             </div>
             <div
               className={styles.water}
-              onClick={() => handleSecondChoice("water")}
+              onClick={() => handleSecondChoice("water", setPlayer2Choice)}
             >
               <Image src={water} alt='water icon' width={50} height={50} />
             </div>
             <div
               className={styles.grass}
-              onClick={() => handleSecondChoice("grass")}
+              onClick={() => handleSecondChoice("grass", setPlayer2Choice)}
             >
               <Image src={grass} alt='grass icon' width={50} height={50} />
             </div>
