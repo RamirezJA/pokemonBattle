@@ -57,3 +57,7 @@
   font-size: 4rem;
   margin: 7px;
 }
+
+.win {
+  display: none;
+}

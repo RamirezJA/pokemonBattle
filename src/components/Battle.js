@@ -11,10 +11,8 @@ export default function Battle() {
   const [secondChoice, setSecondChoice] = useState("")
   const [pokeName1, setPokeName1] = useState("")
   const [pokeName2, setPokeName2] = useState("")
-  const [pokeArt1, setPokeArt1] = useState("")
-  const [pokeArt2, setPokeArt2] = useState("")
-  const [playe1Choice, setPlayer1Choice] = useState("")
-  const [playe2Choice, setPlayer2Choice] = useState("")
+  const [result, setResult] = useState("")
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
@@ -37,6 +35,14 @@ export default function Battle() {
   }
 
   const compareChoices = () => {
+    const container = document.querySelector(`.${styles.container}`)
+    const win = document.querySelector(`.${styles.win}`)
+    if (container) {
+      container.style.display = "none"
+      setIsVisible(false)
+      win.style.display = "block"
+    }
+
     const winners = {
       fire: "grass",
       water: "fire",
@@ -45,10 +51,13 @@ export default function Battle() {
 
     if (firstChoice === secondChoice) {
       console.log("Tie game!")
+      setResult("Tie game!")
     } else if (winners[firstChoice] === secondChoice) {
       console.log(`${firstChoice} beats ${secondChoice}!`)
+      setResult(`${pokeName1.name} wins!`)
     } else {
       console.log(`${secondChoice} beats ${firstChoice}!`)
+      setResult(`${pokeName2.name} wins!`)
     }
   }
 
@@ -127,6 +136,9 @@ export default function Battle() {
               <Image src={grass} alt='grass icon' width={50} height={50} />
             </div>
           </div>
+        </div>
+        <div className={styles.win}>
+          <div>hello</div>
         </div>
         <div className={styles.vs} onClick={() => compareChoices()}>
           Battle
