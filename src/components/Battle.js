@@ -5,6 +5,7 @@ import water from "../../public/water-drop.png"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import "animate.css"
+import Win from "./Win"
 
 export default function Battle() {
   const [firstChoice, setFirstChoice] = useState("")
@@ -24,6 +25,9 @@ export default function Battle() {
     fetchData()
   }, [])
 
+  const name1 = pokeName1.name
+  const name2 = pokeName2.name
+
   const handleFirstChoice = (choice) => {
     setFirstChoice(choice)
     console.log(choice)
@@ -35,21 +39,14 @@ export default function Battle() {
   }
 
   const compareChoices = () => {
-    const container = document.querySelector(`.${styles.container}`)
-    const win = document.querySelector(`.${styles.win}`)
-    if (container) {
-      container.style.display = "none"
-      setIsVisible(false)
-      win.style.display = "block"
-    }
-
     const winners = {
       fire: "grass",
       water: "fire",
       grass: "water",
     }
-
-    if (firstChoice === secondChoice) {
+    if (!firstChoice && !secondChoice) {
+      console.log("Pick 1st")
+    } else if (firstChoice === secondChoice) {
       console.log("Tie game!")
       setResult("Tie game!")
     } else if (winners[firstChoice] === secondChoice) {
@@ -82,19 +79,19 @@ export default function Battle() {
           <div className={styles.options}>
             <div
               className={styles.fire}
-              onClick={() => handleFirstChoice("fire", setPlayer1Choice)}
+              onClick={() => handleFirstChoice("fire")}
             >
               <Image src={fire} alt='fire icon' width={50} height={50} />
             </div>
             <div
               className={styles.water}
-              onClick={() => handleFirstChoice("water", setPlayer1Choice)}
+              onClick={() => handleFirstChoice("water")}
             >
               <Image src={water} alt='water icon' width={50} height={50} />
             </div>
             <div
               className={styles.grass}
-              onClick={() => handleFirstChoice("grass", setPlayer1Choice)}
+              onClick={() => handleFirstChoice("grass")}
             >
               <Image src={grass} alt='grass icon' width={50} height={50} />
             </div>
@@ -119,19 +116,19 @@ export default function Battle() {
           <div className={styles.options}>
             <div
               className={styles.fire}
-              onClick={() => handleSecondChoice("fire", setPlayer2Choice)}
+              onClick={() => handleSecondChoice("fire")}
             >
               <Image src={fire} alt='fire icon' width={50} height={50} />
             </div>
             <div
               className={styles.water}
-              onClick={() => handleSecondChoice("water", setPlayer2Choice)}
+              onClick={() => handleSecondChoice("water")}
             >
               <Image src={water} alt='water icon' width={50} height={50} />
             </div>
             <div
               className={styles.grass}
-              onClick={() => handleSecondChoice("grass", setPlayer2Choice)}
+              onClick={() => handleSecondChoice("grass")}
             >
               <Image src={grass} alt='grass icon' width={50} height={50} />
             </div>
@@ -144,6 +141,7 @@ export default function Battle() {
           Battle
         </div>
       </div>
+      <Win name1={name1} name2={name2}></Win>
     </>
   )
 }
