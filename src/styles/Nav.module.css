@@ -35,6 +35,7 @@
 .home:hover,
 .about:hover {
   background-position: bottom;
+  cursor: pointer;
 }
 
 @keyframes up-down {
