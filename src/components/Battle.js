@@ -16,6 +16,7 @@ export default function Battle() {
   const [result, setResult] = useState("")
   const [isVisible, setIsVisible] = useState(true)
   const [img, setImg] = useState("")
+  const [active, setActive] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -32,12 +33,10 @@ export default function Battle() {
 
   const handleFirstChoice = (choice) => {
     setFirstChoice(choice)
-    console.log(choice)
   }
 
   const handleSecondChoice = (choice) => {
     setSecondChoice(choice)
-    console.log(choice)
   }
 
   const compareChoices = () => {
@@ -46,9 +45,10 @@ export default function Battle() {
       water: "fire",
       grass: "water",
     }
+
     if (!firstChoice && !secondChoice) {
-      console.log("Pick 1st")
-      setResult("Pick 1st!")
+      console.log("Pick both choices")
+      setResult("Pick both choices!")
     } else if (firstChoice === secondChoice) {
       console.log("Tie game!")
       setResult("Tie game!")
@@ -61,9 +61,19 @@ export default function Battle() {
       setResult(`${pokeName2.name} wins!`)
       setImg(pokeName2.sprites.front_default)
     }
+
     setIsVisible(!isVisible)
     if (!isVisible) {
       window.location.reload()
+    }
+  }
+
+  function activeFunc() {
+    const fire = document.querySelectorAll(`.${styles.fire}`)
+    const firstFire = fire.item(0)
+    console.log(firstFire)
+    if (firstFire) {
+      firstFire.classList.add(styles.active)
     }
   }
 
@@ -90,19 +100,28 @@ export default function Battle() {
               <div className={styles.options}>
                 <div
                   className={styles.fire}
-                  onClick={() => handleFirstChoice("fire")}
+                  onClick={() => {
+                    handleFirstChoice("fire")
+                    activeFunc()
+                  }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
                 </div>
                 <div
-                  className={styles.water}
-                  onClick={() => handleFirstChoice("water")}
+                  className={`${styles.water} ${active ? styles.active : ""}`}
+                  onClick={() => {
+                    handleFirstChoice("water")
+                    activeFunc()
+                  }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
                 </div>
                 <div
-                  className={styles.grass}
-                  onClick={() => handleFirstChoice("grass")}
+                  className={`${styles.grass} ${active ? styles.active : ""}`}
+                  onClick={() => {
+                    handleFirstChoice("grass")
+                    activeFunc()
+                  }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
                 </div>
@@ -126,20 +145,29 @@ export default function Battle() {
               </div>
               <div className={styles.options}>
                 <div
-                  className={styles.fire}
-                  onClick={() => handleSecondChoice("fire")}
+                  className={`${styles.fire} ${active ? styles.active : ""}`}
+                  onClick={() => {
+                    handleSecondChoice("fire")
+                    activeFunc()
+                  }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
                 </div>
                 <div
-                  className={styles.water}
-                  onClick={() => handleSecondChoice("water")}
+                  className={`${styles.water} ${active ? styles.active : ""}`}
+                  onClick={() => {
+                    handleSecondChoice("water")
+                    activeFunc()
+                  }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
                 </div>
                 <div
-                  className={styles.grass}
-                  onClick={() => handleSecondChoice("grass")}
+                  className={`${styles.grass} ${active ? styles.active : ""}`}
+                  onClick={() => {
+                    handleSecondChoice("grass")
+                    activeFunc()
+                  }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
                 </div>
