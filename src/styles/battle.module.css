@@ -57,6 +57,20 @@
 .grass:hover {
   cursor: pointer;
 }
+
+.fire2,
+.water2,
+.grass2 {
+  background-color: white;
+  border: 2px solid black;
+  padding: 7px;
+}
+.fire2,
+.water2,
+.grass2:hover {
+  cursor: pointer;
+}
+
 .battle {
   padding: 30px;
   font-size: 3rem;

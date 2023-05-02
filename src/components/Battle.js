@@ -7,6 +7,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import "animate.css"
 import Win from "./Win"
+import { useRef } from "react"
 
 export default function Battle() {
   const [firstChoice, setFirstChoice] = useState("")
@@ -33,6 +34,7 @@ export default function Battle() {
 
   const handleFirstChoice = (choice) => {
     setFirstChoice(choice)
+    //console.log(choice)
   }
 
   const handleSecondChoice = (choice) => {
@@ -67,13 +69,15 @@ export default function Battle() {
       window.location.reload()
     }
   }
+  const fireRef = useRef(null)
 
-  function activeFunc() {
-    const fire = document.querySelectorAll(`.${styles.fire}`)
-    const firstFire = fire.item(0)
-    console.log(firstFire)
-    if (firstFire) {
-      firstFire.classList.add(styles.active)
+  function activeFunc(event) {
+    //console.log(event)
+    const fireElement = fireRef.current
+    const element = document.getElementById("fire1")
+    //console.log(fireElement.classList)
+    if (fireElement.className.includes("one")) {
+      fireElement.classList.toggle(styles.active)
     }
   }
 
@@ -98,29 +102,31 @@ export default function Battle() {
                 )}
               </div>
               <div className={styles.options}>
-                <div
-                  className={styles.fire}
+                <button
+                  id='fire1'
+                  ref={fireRef}
+                  className={`${styles.fire} one`}
                   onClick={() => {
-                    handleFirstChoice("fire")
+                    handleFirstChoice()
                     activeFunc()
                   }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
-                </div>
+                </button>
                 <div
-                  className={`${styles.water} ${active ? styles.active : ""}`}
+                  className={styles.water}
                   onClick={() => {
                     handleFirstChoice("water")
-                    activeFunc()
+                    // activeFunc()
                   }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
                 </div>
                 <div
-                  className={`${styles.grass} ${active ? styles.active : ""}`}
+                  className={styles.grass}
                   onClick={() => {
                     handleFirstChoice("grass")
-                    activeFunc()
+                    //activeFunc()
                   }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
@@ -145,28 +151,28 @@ export default function Battle() {
               </div>
               <div className={styles.options}>
                 <div
-                  className={`${styles.fire} ${active ? styles.active : ""}`}
+                  className={`${styles.fire2} ${active ? styles.active : ""}`}
                   onClick={() => {
                     handleSecondChoice("fire")
-                    activeFunc()
+                    //activeFunc()
                   }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
                 </div>
                 <div
-                  className={`${styles.water} ${active ? styles.active : ""}`}
+                  className={`${styles.water2} ${active ? styles.active : ""}`}
                   onClick={() => {
                     handleSecondChoice("water")
-                    activeFunc()
+                    //activeFunc()
                   }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
                 </div>
                 <div
-                  className={`${styles.grass} ${active ? styles.active : ""}`}
+                  className={`${styles.grass2} ${active ? styles.active : ""}`}
                   onClick={() => {
                     handleSecondChoice("grass")
-                    activeFunc()
+                    //activeFunc()
                   }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
