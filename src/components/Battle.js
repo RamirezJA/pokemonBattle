@@ -80,6 +80,15 @@ export default function Battle() {
       fireElement.classList.toggle(styles.active)
     }
   }
+  function activeFunc2(event) {
+    //console.log(event)
+    const fireElement = fireRef.current
+    const element = document.getElementById("fire1")
+    //console.log(fireElement.classList)
+    if (fireElement.className.includes("one")) {
+      fireElement.classList.toggle(styles.active)
+    }
+  }
 
   return (
     <>
@@ -154,7 +163,7 @@ export default function Battle() {
                   className={`${styles.fire2} ${active ? styles.active : ""}`}
                   onClick={() => {
                     handleSecondChoice("fire")
-                    //activeFunc()
+                    activeFunc2()
                   }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
@@ -163,7 +172,7 @@ export default function Battle() {
                   className={`${styles.water2} ${active ? styles.active : ""}`}
                   onClick={() => {
                     handleSecondChoice("water")
-                    //activeFunc()
+                    activeFunc2()
                   }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
@@ -172,7 +181,7 @@ export default function Battle() {
                   className={`${styles.grass2} ${active ? styles.active : ""}`}
                   onClick={() => {
                     handleSecondChoice("grass")
-                    //activeFunc()
+                    activeFunc2()
                   }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
