@@ -47,7 +47,7 @@ export default function Battle() {
       water: "fire",
       grass: "water",
     }
-
+    console.log(firstChoice + secondChoice)
     if (!firstChoice && !secondChoice) {
       console.log("Pick both choices")
       setResult("Pick both choices!")
@@ -72,22 +72,38 @@ export default function Battle() {
   const fireRef = useRef(null)
 
   function activeFunc(event) {
-    //console.log(event)
-    const fireElement = fireRef.current
-    const element = document.getElementById("fire1")
-    //console.log(fireElement.classList)
-    if (fireElement.className.includes("one")) {
-      fireElement.classList.toggle(styles.active)
+    const clickDiv = event.currentTarget.id
+    console.log(clickDiv)
+    if (clickDiv === "fire") {
+      const element = document.getElementById("fire")
+      element.classList.toggle(styles.active)
+    } else if (clickDiv === "water") {
+      const element = document.getElementById("water")
+      element.classList.toggle(styles.active)
+      //console.log(clickDiv)
+    } else if (clickDiv === "grass") {
+      const element = document.getElementById("grass")
+      element.classList.toggle(styles.active)
+      //console.log(clickDiv)
     }
+    //console.log(fire2.dataset.value)
   }
   function activeFunc2(event) {
-    //console.log(event)
-    const fireElement = fireRef.current
-    const element = document.getElementById("fire1")
-    //console.log(fireElement.classList)
-    if (fireElement.className.includes("one")) {
-      fireElement.classList.toggle(styles.active)
+    const clickDiv = event.currentTarget.id
+    console.log(clickDiv)
+    if (clickDiv === "fire2") {
+      const element = document.getElementById("fire2")
+      element.classList.toggle(styles.active)
+    } else if (clickDiv === "water2") {
+      const element = document.getElementById("water2")
+      element.classList.toggle(styles.active)
+      //console.log(clickDiv)
+    } else if (clickDiv === "grass2") {
+      const element = document.getElementById("grass2")
+      element.classList.toggle(styles.active)
+      //console.log(clickDiv)
     }
+    //console.log(fire2.dataset.value)
   }
 
   return (
@@ -111,31 +127,33 @@ export default function Battle() {
                 )}
               </div>
               <div className={styles.options}>
-                <button
-                  id='fire1'
-                  ref={fireRef}
-                  className={`${styles.fire} one`}
-                  onClick={() => {
-                    handleFirstChoice()
-                    activeFunc()
+                <div
+                  id='fire'
+                  className={`${styles.fire} ${active ? styles.active : ""}`}
+                  onClick={(event) => {
+                    handleFirstChoice("fire")
+                    activeFunc(event)
                   }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
-                </button>
+                </div>
+
                 <div
+                  id='water'
                   className={styles.water}
-                  onClick={() => {
+                  onClick={(event) => {
                     handleFirstChoice("water")
-                    // activeFunc()
+                    activeFunc(event)
                   }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
                 </div>
                 <div
+                  id='grass'
                   className={styles.grass}
-                  onClick={() => {
+                  onClick={(event) => {
                     handleFirstChoice("grass")
-                    //activeFunc()
+                    activeFunc(event)
                   }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
@@ -160,28 +178,32 @@ export default function Battle() {
               </div>
               <div className={styles.options}>
                 <div
+                  id='fire2'
                   className={`${styles.fire2} ${active ? styles.active : ""}`}
-                  onClick={() => {
+                  onClick={(event) => {
                     handleSecondChoice("fire")
-                    activeFunc2()
+                    activeFunc2(event)
                   }}
                 >
                   <Image src={fire} alt='fire icon' width={50} height={50} />
                 </div>
                 <div
+                  id='water2'
                   className={`${styles.water2} ${active ? styles.active : ""}`}
-                  onClick={() => {
+                  onClick={(event) => {
                     handleSecondChoice("water")
-                    activeFunc2()
+                    activeFunc2(event)
                   }}
                 >
                   <Image src={water} alt='water icon' width={50} height={50} />
                 </div>
                 <div
+                  id='grass2'
                   className={`${styles.grass2} ${active ? styles.active : ""}`}
-                  onClick={() => {
+                  value='one'
+                  onClick={(event) => {
                     handleSecondChoice("grass")
-                    activeFunc2()
+                    activeFunc2(event)
                   }}
                 >
                   <Image src={grass} alt='grass icon' width={50} height={50} />
