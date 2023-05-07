@@ -1,8 +1,13 @@
 .main {
-  background-color: aliceblue;
-  border: 4px solid rgb(6, 6, 231);
+  border: 4px solid rgb(0, 0, 15);
   border-radius: 10px;
   font-size: 5rem;
+  color: #101010;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .btn {
   color: red;
