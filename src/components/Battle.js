@@ -237,7 +237,7 @@ export default function Battle() {
             <Image src={ball} alt='ball' width={100} height={100} />
           </div>
         ) : (
-          <div className={styles.battle} onClick={() => compareChoices()}>
+          <div id="again" className={styles.battle} onClick={() => compareChoices()}>
             Play Again?
           </div>
         )}
