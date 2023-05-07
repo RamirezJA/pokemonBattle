@@ -73,34 +73,48 @@ export default function Battle() {
 
   function activeFunc(event) {
     const clickDiv = event.currentTarget.id
+    const fire = document.getElementById("fire")
+    const water = document.getElementById("water")
+    const grass = document.getElementById("grass")
+
     console.log(clickDiv)
     if (clickDiv === "fire") {
-      const element = document.getElementById("fire")
-      element.classList.toggle(styles.active)
+      water.classList.toggle(styles.active, false)
+      grass.classList.toggle(styles.active, false)
+      fire.classList.toggle(styles.active)
     } else if (clickDiv === "water") {
-      const element = document.getElementById("water")
-      element.classList.toggle(styles.active)
+      fire.classList.toggle(styles.active, false)
+      grass.classList.toggle(styles.active, false)
+      water.classList.toggle(styles.active)
       //console.log(clickDiv)
     } else if (clickDiv === "grass") {
-      const element = document.getElementById("grass")
-      element.classList.toggle(styles.active)
+      water.classList.toggle(styles.active, false)
+      fire.classList.toggle(styles.active, false)
+      grass.classList.toggle(styles.active)
       //console.log(clickDiv)
     }
     //console.log(fire2.dataset.value)
   }
   function activeFunc2(event) {
     const clickDiv = event.currentTarget.id
+    const fire2 = document.getElementById("fire2")
+    const water2 = document.getElementById("water2")
+    const grass2 = document.getElementById("grass2")
+
     console.log(clickDiv)
     if (clickDiv === "fire2") {
-      const element = document.getElementById("fire2")
-      element.classList.toggle(styles.active)
+      water2.classList.toggle(styles.active, false)
+      grass2.classList.toggle(styles.active, false)
+      fire2.classList.toggle(styles.active)
     } else if (clickDiv === "water2") {
-      const element = document.getElementById("water2")
-      element.classList.toggle(styles.active)
+      fire2.classList.toggle(styles.active, false)
+      grass2.classList.toggle(styles.active, false)
+      water2.classList.toggle(styles.active)
       //console.log(clickDiv)
     } else if (clickDiv === "grass2") {
-      const element = document.getElementById("grass2")
-      element.classList.toggle(styles.active)
+      water2.classList.toggle(styles.active, false)
+      fire2.classList.toggle(styles.active, false)
+      grass2.classList.toggle(styles.active)
       //console.log(clickDiv)
     }
     //console.log(fire2.dataset.value)
